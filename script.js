@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const orderForm = document.getElementById("orderForm");
     const statusMessage = document.getElementById("statusMessage");
 
-    const BACKEND_URL = "https://SIZNING-BACKEND-MANZILINGIZ.vercel.app/api/send-order";
+    const BACKEND_URL = "https://sam-pink-eta.vercel.app/api/send-order";
 
     if (orderForm) {
         orderForm.addEventListener("submit", (e) => {
