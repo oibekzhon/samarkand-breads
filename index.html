@@ -20,6 +20,7 @@
     <meta name="twitter:description" content="Samarqand nonlariga buyurtmalar." />
     <meta name="twitter:image" content="https://i.ibb.co/MkwPhHR3/Samarkand-breads.jpg" />
 
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
@@ -148,6 +149,8 @@
                 <p>Ismingiz va telefon raqamingizni qoldiring, operatorimiz 5 daqiqada siz bilan bog'lanadi va
                     manzilingizni aniqlashtiradi.</p>
 
+
+
                 <form id="orderForm">
                     <div class="form-group">
                         <input type="text" id="userName" placeholder="Ismingiz" required>
@@ -163,7 +166,8 @@
                             <option value="Sariyog'li patir">Uvalanib ketadigan Sariyog'li Patir</option>
                         </select>
                     </div>
-                    <input type="text" name="website" id="website" style="position:absolute; left:-9999px;" tabindex="-1" autocomplete="off">
+                    <input type="text" name="website" id="website" style="position:absolute; left:-9999px;"tabindex="-1" autocomplete="off">
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAAD1rUsbYgJ9jrCch"></div>
                     <button type="submit" class="btn btn-primary btn-block">Buyurtmani tasdiqlash</button>
                 </form>
                 <div id="statusMessage" class="status-msg hidden"></div>

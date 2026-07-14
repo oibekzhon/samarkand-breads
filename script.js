@@ -47,7 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     name,
                     phone,
                     product: selectedProduct,
-                    website: document.getElementById("website").value
+                    website: document.getElementById("website").value,
+                    turnstileToken: document.querySelector('[name="cf-turnstile-response"]')?.value || ""
                 })
             })
                 .then(response => response.json().then(data => ({ status: response.status, body: data })))
