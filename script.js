@@ -46,7 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify({
                     name,
                     phone,
-                    product: selectedProduct
+                    product: selectedProduct,
+                    website: document.getElementById("website").value
                 })
             })
                 .then(response => response.json().then(data => ({ status: response.status, body: data })))
