@@ -91,6 +91,11 @@ header {
     padding: 10px 0;
 }
 
+.site-logo {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .logo-area {
     display: flex;
     align-items: center;
