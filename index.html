@@ -2,40 +2,36 @@
 <html lang="uz">
 
 <head>
-    <!DOCTYPE html>
-    <html lang="uz">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samarkand Breads — Samarqand Noni va Patiri | Toshkentga Yetkazib Berish</title>
+    <meta name="description"
+        content="An'anaviy Samarqand noni, Gala-Osiyo va sariyog'li patir — o'tin tandirda pishirilgan, yangi va issiq holda Toshkentga yetkazib beramiz. Hoziroq buyurtma bering!">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://samarkandbreads.yolaco.uz/">
 
-        <title>Samarkand Breads — Samarqand Noni va Patiri | Toshkentga Yetkazib Berish</title>
-        <meta name="description"
-            content="An'anaviy Samarqand noni, Gala-Osiyo va sariyog'li patir — o'tin tandirda pishirilgan, yangi va issiq holda Toshkentga yetkazib beramiz. Hoziroq buyurtma bering!">
-        <meta name="robots" content="index, follow">
-        <link rel="canonical" href="https://samarkandbreads.yolaco.uz/">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/favicon.ico" sizes="any">
 
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" href="/favicon.ico" sizes="any">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://samarkandbreads.yolaco.uz/" />
+    <meta property="og:title" content="Samarkand Breads — Samarqand Noni va Patiri" />
+    <meta property="og:description"
+        content="An'anaviy Samarqand noni va patiri — o'tin tandirda pishirilgan, Toshkentga yetkazib beramiz." />
+    <meta property="og:image" content="https://i.ibb.co/MkwPhHR3/Samarkand-breads.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="uz_UZ" />
+    <meta property="og:site_name" content="Samarkand Breads" />
 
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://samarkandbreads.yolaco.uz/" />
-        <meta property="og:title" content="Samarkand Breads — Samarqand Noni va Patiri" />
-        <meta property="og:description"
-            content="An'anaviy Samarqand noni va patiri — o'tin tandirda pishirilgan, Toshkentga yetkazib beramiz." />
-        <meta property="og:image" content="https://i.ibb.co/MkwPhHR3/Samarkand-breads.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:locale" content="uz_UZ" />
-        <meta property="og:site_name" content="Samarkand Breads" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Samarkand Breads — Samarqand Noni va Patiri" />
+    <meta name="twitter:description"
+        content="An'anaviy Samarqand noni va patiri — o'tin tandirda pishirilgan, Toshkentga yetkazib beramiz." />
+    <meta name="twitter:image" content="https://i.ibb.co/MkwPhHR3/Samarkand-breads.jpg" />
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Samarkand Breads — Samarqand Noni va Patiri" />
-        <meta name="twitter:description"
-            content="An'anaviy Samarqand noni va patiri — o'tin tandirda pishirilgan, Toshkentga yetkazib beramiz." />
-        <meta name="twitter:image" content="https://i.ibb.co/MkwPhHR3/Samarkand-breads.jpg" />
-
-        <script type="application/ld+json">
+    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Bakery",
@@ -55,8 +51,7 @@
     }
     </script>
 
-        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-    </head>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
@@ -67,7 +62,12 @@
                 <img src="Samarkand breads.jpg" alt="Samarkand Breads Logo" class="site-logo">
                 <span class="logo-text">Samarkand<span>Breads</span></span>
             </div>
-            <nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menyu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mainNav">
                 <ul class="nav-links">
                     <li><a href="#home">Asosiy</a></li>
                     <li><a href="#about">Biz haqimizda</a></li>
@@ -184,8 +184,6 @@
                 <h2>Issiqqina non buyurtma qiling!</h2>
                 <p>Ismingiz va telefon raqamingizni qoldiring, operatorimiz 5 daqiqada siz bilan bog'lanadi va
                     manzilingizni aniqlashtiradi.</p>
-
-
 
                 <form id="orderForm">
                     <div class="form-group">
