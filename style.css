@@ -79,7 +79,6 @@ body {
 header {
     background-color: var(--white);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    position: sticky;
     top: 0;
     z-index: 1000;
 }
@@ -532,4 +531,23 @@ footer {
     #orderForm {
         padding: 25px 15px;
     }
+}
+
+.field-error {
+    display: block;
+    color: #c5221f;
+    font-size: 13px;
+    margin-top: 6px;
+    padding-left: 20px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.field-error.hidden {
+    display: none;
+}
+
+#orderForm input.input-error {
+    border-color: #c5221f;
+    background-color: #fdecea;
 }

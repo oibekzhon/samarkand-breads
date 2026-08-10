@@ -18,21 +18,86 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const orderForm = document.getElementById("orderForm");
     const statusMessage = document.getElementById("statusMessage");
+    const userNameInput = document.getElementById("userName");
+    const userPhoneInput = document.getElementById("userPhone");
+    const nameError = document.getElementById("nameError");
+    const phoneError = document.getElementById("phoneError");
 
     const BACKEND_URL = "https://sam-pink-eta.vercel.app/api/send-order";
+    const PHONE_PREFIX = "+998 ";
+
+    const namePattern = /^[a-zA-ZʻʼʹА-Яа-яЁёʼ'’‘\-\s]{2,60}$/u;
+    const phonePattern = /^\+998 \d{2} \d{3} \d{2} \d{2}$/;
+
+    function showFieldError(input, errorEl, message) {
+        input.classList.add("input-error");
+        errorEl.textContent = message;
+        errorEl.classList.remove("hidden");
+    }
+
+    function clearFieldError(input, errorEl) {
+        input.classList.remove("input-error");
+        errorEl.textContent = "";
+        errorEl.classList.add("hidden");
+    }
+
+    userPhoneInput.addEventListener("focus", () => {
+        if (!userPhoneInput.value) {
+            userPhoneInput.value = PHONE_PREFIX;
+        }
+    });
+
+    userPhoneInput.addEventListener("input", () => {
+        let digits = userPhoneInput.value.replace(/\D/g, "");
+
+        if (digits.startsWith("998")) {
+            digits = digits.slice(3);
+        }
+        digits = digits.slice(0, 9);
+
+        let formatted = "+998";
+        if (digits.length > 0) formatted += " " + digits.slice(0, 2);
+        if (digits.length > 2) formatted += " " + digits.slice(2, 5);
+        if (digits.length > 5) formatted += " " + digits.slice(5, 7);
+        if (digits.length > 7) formatted += " " + digits.slice(7, 9);
+
+        userPhoneInput.value = formatted;
+        clearFieldError(userPhoneInput, phoneError);
+    });
+
+    userNameInput.addEventListener("input", () => {
+        clearFieldError(userNameInput, nameError);
+    });
 
     if (orderForm) {
         orderForm.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            const name = document.getElementById("userName").value.trim();
-            const phone = document.getElementById("userPhone").value.trim();
+            const name = userNameInput.value.trim();
+            const phone = userPhoneInput.value.trim();
             const selectedProduct = productSelect.value;
+
+            clearFieldError(userNameInput, nameError);
+            clearFieldError(userPhoneInput, phoneError);
+
+            let hasError = false;
+
+            if (!namePattern.test(name)) {
+                showFieldError(userNameInput, nameError, "Ism faqat harflardan iborat bo'lishi kerak (kamida 2 ta belgi)");
+                hasError = true;
+            }
+
+            if (!phonePattern.test(phone)) {
+                showFieldError(userPhoneInput, phoneError, "Telefon raqami to'liq kiritilmagan (+998 XX XXX XX XX)");
+                hasError = true;
+            }
 
             if (!selectedProduct) {
                 showStatus("Iltimos, non turini tanlang!", false);
-                return;
+                hasError = true;
             }
+
+            if (hasError) return;
 
             const submitBtn = orderForm.querySelector("button[type='submit']");
             submitBtn.disabled = true;
@@ -56,13 +121,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (status === 200 && body.ok) {
                         showStatus(`Rahmat, ${name}! Buyurtmangiz qabul qilindi va botga yuborildi.`, true);
                         orderForm.reset();
+                        userPhoneInput.value = "";
                     } else {
-                        throw new Error(body.error || "Server xatolik qaytardi");
+                        const errMsg = body.error || "Server xatolik qaytardi";
+                        const lowerMsg = errMsg.toLowerCase();
+
+                        if (lowerMsg.includes("ism")) {
+                            showFieldError(userNameInput, nameError, errMsg);
+                        } else if (lowerMsg.includes("telefon")) {
+                            showFieldError(userPhoneInput, phoneError, errMsg);
+                        } else {
+                            showStatus(errMsg, false);
+                        }
+                        throw new Error(errMsg);
                     }
                 })
                 .catch(error => {
                     console.error("Xatolik:", error);
-                    showStatus("Xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring yoki internetingizni tekshiring.", false);
                 })
                 .finally(() => {
                     submitBtn.disabled = false;
@@ -93,4 +168,4 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
-});
+}); 
