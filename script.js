@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let hasError = false;
 
             if (!namePattern.test(name)) {
-                showFieldError(userNameInput, nameError, "Ism faqat harflardan iborat bo'lishi kera");
+                showFieldError(userNameInput, nameError, "Ism faqat harflardan iborat bo'lishi kerak!");
                 hasError = true;
             }
 
