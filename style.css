@@ -479,9 +479,7 @@ footer {
     .about-stats {
         width: 100%;
     }
-}
 
-@media (max-width: 768px) {
     .menu-toggle {
         display: flex;
     }
@@ -523,7 +521,9 @@ footer {
     .header-container .btn-nav {
         display: none;
     }
+}
 
+@media (max-width: 768px) {
     .hero-text h1 {
         font-size: 34px;
     }
