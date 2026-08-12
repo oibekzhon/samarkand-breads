@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let hasError = false;
 
             if (!namePattern.test(name)) {
-                showFieldError(userNameInput, nameError, "Ism faqat harflardan iborat bo'lishi kerak (kamida 2 ta belgi)");
+                showFieldError(userNameInput, nameError, "Ism faqat harflardan iborat bo'lishi kera");
                 hasError = true;
             }
 
