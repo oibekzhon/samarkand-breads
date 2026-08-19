@@ -180,7 +180,7 @@ function Contact({ selectedProduct, setSelectedProduct }) {
                             autoComplete="off"
                         />
 
-                        <div id="turnstile-widget" className="cf-turnstile"></div>
+                        <div id="turnstile-widget"></div>
 
                         <button type="submit" className="btn btn-primary btn-block" disabled={submitting}>
                             {submitting ? "Yuborilmoqda..." : "Buyurtmani tasdiqlash"}
